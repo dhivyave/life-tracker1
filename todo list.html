@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Life Tracker</title>
+  <style>
+    body {
+      background-color: #00fafa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+    }
+
+ h1 {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #222;
+  font-size: 2.5rem;
+}
+
+.container-wrapper {
+  display: flex;
+  justify-content: center;    
+  align-items: flex-start;     
+  padding-top: 40px;           
+  height: 100vh;
+}
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 350px;
+      text-align: center;
+    }
+
+    .form-group {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 65%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-left: 8px;
+      border: none;
+      border-radius: 5px;
+      background-color: #0077ff;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005fcc;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    li {
+      background-color: #f0f0f0;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .delete-btn {
+      background-color: #ff4d4d;
+    }
+
+    .delete-btn:hover {
+      background-color: #d93636;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>LIFE TRACKER</h1>
+
+  <div class="container-wrapper">
+    <div class="container">
+      <h2>ADD YOUR TASK</h2>
+      <div class="form-group">
+        <input id="list" type="text" placeholder="Enter your task..." />
+        <button onclick="add()">add</button>
+      </div>
+      <ul id="container">
+        <li>
+          HELLO
+          <button class="delete-btn" onclick="del(event)">delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const ul = document.getElementById("container");
+    const list = document.getElementById("list");
+
+    function add() {
+      if (list.value.trim() === "") return; 
+
+      const li = document.createElement("li");
+      li.innerHTML = list.value +
+        ' <button class="delete-btn" onclick="del(event)">delete</button>';
+      ul.appendChild(li);
+      list.value = ""; 
+    }
+
+    function del(event) {
+      event.target.parentElement.remove();
+    }
+  </script>
+</body>
+</html>
